@@ -21,11 +21,11 @@ resource "aws_vpc_security_group_ingress_rule" "allow_sh_ipv4" {
   to_port           = 22
 }
 
-resource "aws_vpc_security_group_ingress_rule" "allow_ports" {
-    for_each = { for port in var.ports : port => port }
-    security_group_id = aws_security_group.allow_ssh.id
-    cidr_ipv4         = var.ssh_sg_cidr_block
-    from_port         = each.value
-    ip_protocol       = "tcp"
-    to_port           = each.value
-}
+# resource "aws_vpc_security_group_ingress_rule" "allow_ports" {
+#     for_each = { for port in var.ports : port => port }
+#     security_group_id = aws_security_group.allow_ssh.id
+#     cidr_ipv4         = var.ssh_sg_cidr_block
+#     from_port         = each.value
+#     ip_protocol       = "tcp"
+#     to_port           = each.value
+# }
